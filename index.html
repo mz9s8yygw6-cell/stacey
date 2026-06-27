@@ -1,212 +1,53 @@
+
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>黛西生活賣場｜蝦皮推廣連結轉換器</title>
-    <style>
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; 
-            background-color: #fff5f0; 
-            padding: 20px; 
-            display: flex; 
-            justify-content: center; 
-        }
-        .container { 
-            background: white; 
-            padding: 30px; 
-            border-radius: 16px; 
-            box-shadow: 0 4px 20px rgba(238, 77, 45, 0.08); 
-            width: 100%; 
-            max-width: 550px; 
-        }
-        h2 { 
-            color: #ee4d2d; 
-            text-align: center; 
-            margin-bottom: 5px;
-        }
-        .subtitle {
-            text-align: center;
-            color: #666;
-            font-size: 14px;
-            margin-bottom: 25px;
-        }
-        label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 8px;
-            color: #333;
-        }
-        textarea { 
-            width: 100%; 
-            height: 150px; 
-            padding: 12px; 
-            border: 1px solid #e0e0e0; 
-            border-radius: 8px; 
-            box-sizing: border-box; 
-            resize: vertical; 
-            font-size: 14px;
-            line-height: 1.5;
-        }
-        textarea:focus {
-            outline: none;
-            border-color: #ee4d2d;
-            box-shadow: 0 0 0 2px rgba(238, 77, 45, 0.1);
-        }
-        .btn-group { 
-            margin-top: 15px; 
-            display: flex; 
-            gap: 12px; 
-        }
-        button { 
-            flex: 1; 
-            padding: 12px; 
-            border: none; 
-            border-radius: 8px; 
-            font-size: 16px; 
-            font-weight: bold;
-            cursor: pointer; 
-            transition: background 0.2s;
-        }
-        .btn-convert { background-color: #ee4d2d; color: white; }
-        .btn-convert:hover { background-color: #d73f22; }
-        .btn-clear { background-color: #f0f0f0; color: #555; }
-        .btn-clear:hover { background-color: #e5e5e5; }
-        .btn-line {
-            display: block;
-            text-align: center;
-            background-color: #06C755;
-            color: white;
-            text-decoration: none;
-            padding: 12px;
-            border-radius: 8px;
-            font-weight: bold;
-            margin-top: 20px;
-        }
-        .btn-line:hover { background-color: #05b34c; }
-        .result-box { 
-            margin-top: 25px; 
-            border-top: 2px dashed #eee; 
-            padding-top: 20px; 
-            display: none; 
-        }
-        .result-status {
-            font-weight: bold; 
-            color: #333;
-            margin-bottom: 10px;
-        }
-        .result-list { 
-            background: #fafafa; 
-            padding: 15px; 
-            border-radius: 8px; 
-            border: 1px solid #f0f0f0;
-            word-break: break-all; 
-            max-height: 200px; 
-            overflow-y: auto; 
-        }
-        .result-item {
-            margin: 8px 0;
-            font-size: 14px;
-        }
-        .btn-copy { 
-            background-color: #ff5722; 
-            color: white; 
-            width: 100%; 
-            margin-top: 15px; 
-        }
-        .btn-copy:hover { background-color: #e64a19; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>黛西生活賣場SHOPEE｜社群推廣連結轉換</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <main class="container">
+    <section class="card">
+      <div class="badge">黛西生活賣場SHOPEE</div>
 
-<div class="container">
-    <h2>黛西生活賣場｜省錢攻略</h2>
-    <div class="subtitle">蝦皮推廣連結轉換器（專屬帳號：stacey0426）</div>
-    
-    <label for="inputLinks">蝦皮連結</label>
-    <textarea id="inputLinks" placeholder="請貼入蝦皮網址，一行一個。例如：&#10;https://tw.shp.ee/B1pFqNE3"></textarea>
-    
-    <div class="btn-group">
-        <button class="btn-convert" onclick="convertLinks()">產生推廣連結</button>
-        <button class="btn-clear" onclick="clearAll()">清除</button>
-    </div>
+      <h1>蝦皮推廣連結轉換</h1>
 
-    <!-- 已更新為您專屬的 LINE 社群網址 -->
-    <a href="https://line.me/ti/g2/4rTPnjDWV3TC5m9hpXeDniSQnjlt1gSoUwS-UA?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" class="btn-line">加入 LINE 社群看更多優惠</a>
+      <p class="subtitle">
+        蝦皮分潤專屬優惠!!!
+      </p>
 
-    <!-- 結果顯示區 -->
-    <div id="resultSection" class="result-box">
-        <div id="resultStatus" class="result-status"></div>
-        <label>推廣連結</label>
-        <div id="resultList" class="result-list"></div>
-        <button class="btn-copy" onclick="copyAll()">一鍵複製全部</button>
-    </div>
-</div>
+      <label for="urlInput">蝦皮連結</label>
+      <textarea
+        id="urlInput"
+        placeholder="請貼上蝦皮商品連結，一行一個最多5個。例如：&#10;https://tw.shp.ee/B1pFqNE3"
+      ></textarea>
 
-<script>
-    function convertLinkLogic(originalUrl) {
-        let urlText = originalUrl.trim();
-        if (!urlText) return null;
-        
-        if (urlText.includes("tw.shp.ee")) {
-            let urlObj = new URL(urlText);
-            let pathId = urlObj.pathname.replace(/^\//, ''); 
-            return `https://s.shopee.tw/stacey0426/${pathId}`;
-        }
-        
-        return urlText; 
-    }
+      
 
-    function convertLinks() {
-        const inputText = document.getElementById('inputLinks').value;
-        const rawLinks = inputText.split(/[\n\r\s]+/).filter(link => link.trim() !== "");
-        
-        if (rawLinks.length === 0) {
-            alert("請先輸入蝦皮連結！");
-            return;
-        }
+      <div class="buttons">
+        <button id="convertBtn">產生推廣連結</button>
+        <button id="clearBtn" class="secondary">清除</button>
+      </div>
 
-        const resultListDiv = document.getElementById('resultList');
-        resultListDiv.innerHTML = ""; 
-        
-        let successCount = 0;
-        let convertedArray = [];
+      <a
+  class="line-btn"
+  href="https://line.me/ti/g2/4rTPnjDWV3TC5m9hpXeDniSQnjlt1gSoUwS-UA?utm_source=invitation&utm_medium=link_copy&utm_campaign=default"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  加入 LINE 社群看更多優惠
+</a>
 
-        rawLinks.forEach((link) => {
-            let converted = convertLinkLogic(link);
-            if (converted) {
-                successCount++;
-                convertedArray.push(converted);
-                
-                let div = document.createElement('div');
-                div.className = "result-item";
-                div.innerHTML = `${successCount}. <a href="${converted}" target="_blank" style="color: #0066cc; text-decoration: none;">${converted}</a>`;
-                resultListDiv.appendChild(div);
-            }
-        });
+      <p id="status"></p>
 
-        document.getElementById('resultStatus').innerText = `完成，共產生 ${successCount} 個推廣連結`;
-        document.getElementById('resultSection').style.display = "block";
-        
-        document.querySelector('.btn-copy').setAttribute('data-links', convertedArray.join('\n'));
-    }
+      <div id="resultArea" class="result-area"></div>
+    </section>
+  </main>
 
-    function clearAll() {
-        document.getElementById('inputLinks').value = "";
-        document.getElementById('resultSection').style.display = "none";
-    }
+  <div id="toast">已複製</div>
 
-    function copyAll() {
-        const linksToCopy = document.querySelector('.btn-copy').getAttribute('data-links');
-        if (linksToCopy) {
-            navigator.clipboard.writeText(linksToCopy).then(() => {
-                alert("已成功複製全部連結！");
-            }).catch(err => {
-                alert("複製失敗，請手動全選複製。");
-            });
-        }
-    }
-</script>
-
+  <script src="script.js"></script>
 </body>
 </html>
